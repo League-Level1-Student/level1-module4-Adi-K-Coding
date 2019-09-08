@@ -54,19 +54,21 @@ public class Jeopardy implements ActionListener {
 		// 5. Add the quizPanel to the frame
 		frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
-
+		firstButton = createButton("$100");
 		// 7. Add the firstButton to the quizPanel
-
+		quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that
 		// your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
 
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-
+		secondButton = createButton("$200");
 		// 10. Add the secondButton to the quizPanel
-
+		quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
+		firstButton.addActionListener(this);
+		secondButton.addActionListener(this);
 
 		// 12. Write the code to complete the actionPerformed() method below
 
@@ -87,9 +89,9 @@ public class Jeopardy implements ActionListener {
 	private JButton createButton(String dollarAmount) {
 
 		// Create a new JButton
-		JButton b1 = new JButton("$100");
+		JButton b1 = new JButton(dollarAmount);
 		// Set the text of the button to the dollarAmount
-		
+
 		// Increment the buttonCount (this should make the layout vertical)
 		buttonCount++;
 		// Return your new button instead of the temporary button
@@ -100,11 +102,18 @@ public class Jeopardy implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		// Remove this temporary message after testing:
-		JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
+	//	JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
+		if (buttonPressed == firstButton) {
 
+			askQuestion("Solve for y if x = 6. y= 3(2x+3)", "45", 200);
+			firstButton.setText("");
+		} else if (buttonPressed == secondButton) {
+			askQuestion("What is 81^(3/2)", "729", 400);
+		secondButton.setText("");
+		}
 		// Call the askQuestion() method
 
 		// Complete the code in the askQuestion() method. When you play the game, the
@@ -123,11 +132,21 @@ public class Jeopardy implements ActionListener {
 
 		// Use the playJeopardyTheme() method to play music while the use thinks of an
 		// answer
-
+		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user
 		// the question
-		JOptionPane.showMessageDialog(null, "this is where the question will be asked");
+		String answer = JOptionPane.showInputDialog(question);
 
+		if (answer.equals( correctAnswer)) {
+			sound.stop();
+			score = score + prizeMoney;
+			JOptionPane.showMessageDialog(null, "Correct!");
+		} else {
+			sound.stop();
+			score = score - prizeMoney;
+		JOptionPane.showMessageDialog(null, "Incorrect! The correct answer was "+correctAnswer);
+		}
+		updateScore();
 		// Stop the theme music when they have entered their response. Hint: use the
 		// sound variable
 
