@@ -54,7 +54,7 @@ public class Jeopardy implements ActionListener {
 		// 5. Add the quizPanel to the frame
 		frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
-		firstButton = createButton("$100");
+		firstButton = createButton("$200");
 		// 7. Add the firstButton to the quizPanel
 		quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that
@@ -63,7 +63,7 @@ public class Jeopardy implements ActionListener {
 
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-		secondButton = createButton("$200");
+		secondButton = createButton("$400");
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
@@ -73,7 +73,12 @@ public class Jeopardy implements ActionListener {
 		// 12. Write the code to complete the actionPerformed() method below
 
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
-
+thirdButton=createButton("$600");
+quizPanel.add(thirdButton);
+thirdButton.addActionListener(this);
+fourthButton=createButton("$800");
+quizPanel.add(fourthButton);
+fourthButton.addActionListener(this);
 		/*
 		 * [optional] Use the showImage or playSound methods when the user answers a
 		 * question
@@ -111,8 +116,14 @@ public class Jeopardy implements ActionListener {
 			askQuestion("Solve for y if x = 6. y= 3(2x+3)", "45", 200);
 			firstButton.setText("");
 		} else if (buttonPressed == secondButton) {
-			askQuestion("What is 81^(3/2)", "729", 400);
+			askQuestion("What is 50% of 25?","12.5",600);
 		secondButton.setText("");
+		}else if(buttonPressed==thirdButton) {
+			askQuestion("What is 81^(3/2)", "729", 400);
+		thirdButton.setText("");
+		}else if(buttonPressed == fourthButton) {
+			askQuestion("Find the volume of of a sphere if the radius is 3 in terms of pi. ","36",800);
+		fourthButton.setText("");
 		}
 		// Call the askQuestion() method
 
