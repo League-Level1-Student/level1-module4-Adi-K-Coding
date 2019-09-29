@@ -26,7 +26,10 @@ public class TypingTutor implements KeyListener {
 	label.setFont(label.getFont().deriveFont(28.0f));
 	label.setHorizontalAlignment(JLabel.CENTER);
 	frame.addKeyListener(this);
+	frame.add(panel);
 	panel.add(label);
+	frame.pack();
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	char generateRandomLetter() {
@@ -44,7 +47,9 @@ public class TypingTutor implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		System.out.println("You pressed:"+e.getKeyChar());
 		if(e.getKeyChar()==currentLetter) {
-			frame.setBackground(new Color(0,255,0));
+			panel.setBackground(new Color(0,255,0));
+		}else {
+			panel.setBackground(new Color(255,0,0));
 		}
 	}
 
@@ -52,5 +57,6 @@ public class TypingTutor implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		currentLetter = generateRandomLetter();
 		label.setText(currentLetter+"");
+	panel.setBackground(new Color(255,255,255));
 	}
 }

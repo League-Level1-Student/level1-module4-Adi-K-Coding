@@ -33,7 +33,7 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
    	 // 2. Adjust the frameWidth and frameHeight variables to fit your image nicely (doesn’t need a new line of code)
      // 3. Complete the begin() method in the FortuneTellerRunner class
  	 // 4. add a mouse listener to the frame
-
+frame.addMouseListener(this);
     }
 
 
