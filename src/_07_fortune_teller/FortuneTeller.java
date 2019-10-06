@@ -43,23 +43,34 @@ frame.addMouseListener(this);
    	 int mouseX = e.getX();
    	 int mouseY = e.getY();
    	 // 5. Print the mouseX variable
-
+System.out.println(mouseX+", "+mouseY);
    	 // 6. Add the mouseY variable to the previous line so that it prints out too (no new line)
    	 // 7. Adjust your secret location co-ordinates here:
-   	 int secretLocationX = 0;
-   	 int secretLocationY = 0;
+   	 int secretLocationX = 257;
+   	 int secretLocationY = 219;
    	 /** If the mouse co-ordinates and secret location are close, we'll let them ask a question. */
    	 if (areClose(mouseX, secretLocationX) && areClose(mouseY, secretLocationY)) {
    		 // 8. Get the user to enter a question for the fortune teller
-
+JOptionPane.showInputDialog("Ask a question.");
    		 // 9. Find a spooky sound and put it in your default package (freesound.org)
-   		 // AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
+   		 AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
    		 // 10. Play the sound
-
+sound.play();
    		 // 11. Use the pause() method below to wait until your music has finished
-
+pause(8);
    		 // 12. Insert your completed Magic 8 ball code here
-
+int randomNumber=new Random().nextInt(4);
+System.out.println(randomNumber);	
+JOptionPane.showInputDialog("Ask a question.");	
+if(randomNumber==0) {
+JOptionPane.showMessageDialog(null, "Yes");
+}else if(randomNumber==1) {
+JOptionPane.showMessageDialog(null, "No");
+}else if(randomNumber==2) {
+JOptionPane.showMessageDialog(null, "You should ask Google");
+}else if(randomNumber==3) {
+JOptionPane.showMessageDialog(null, "Maybe");
+}
    	 }
 
     }

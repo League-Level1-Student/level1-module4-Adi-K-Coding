@@ -15,6 +15,6 @@ public class FortuneTellerRunner {
     
     static void begin() {
       	 // Welcome the user. Give them a hint for the secret location.
-JOptionPane.showMessageDialog(null, "Welcome,");
+JOptionPane.showMessageDialog(null, "Welcome, the place which you seek lies in between the windows to the soul");
     }
 }
