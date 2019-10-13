@@ -24,10 +24,6 @@ public class Calculator implements ActionListener {
 	JButton multiply = new JButton("Multiply");
 	JButton divide = new JButton("Divide");
 
-	public static void main(String[] args) {
-		Calculator c = new Calculator();
-		c.run();
-	}
 
 	void run() {
 		frame.setVisible(true);
