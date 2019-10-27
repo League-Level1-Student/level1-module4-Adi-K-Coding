@@ -1,6 +1,7 @@
 package _11_whack_a_mole;
 
 import java.applet.AudioClip;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -28,12 +29,13 @@ public class WhackAMole implements ActionListener {
 	
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300, 500);
+		frame.setPreferredSize(new Dimension(300,500));
 		drawButtons();
 		d = new Date();
 	}
 
 	void drawButtons() {
+		panel=new JPanel();
 		Random r = new Random();
 		int button = r.nextInt(24);
 		for (int i = 0; i < 24; i++) {
@@ -47,7 +49,7 @@ public class WhackAMole implements ActionListener {
 			}
 		}
 	frame.add(panel);
-	
+	frame.pack();
 	}
 
 	@Override
@@ -57,13 +59,14 @@ public class WhackAMole implements ActionListener {
 			score = score + 1;
 			playSound("beep.wav");
 		} else {
-			speak("You missed you pathetic scumbag Open your eyes you blind bat You're a disgrace to humanity.");
+			speak("You missed");
 			missedCount = missedCount + 1;
 		}
-		frame.dispose();
+		frame.remove(panel);
 		drawButtons();
 		if (score == 10) {
 			endGame(d, 10);
+		System.exit(0);
 		}
 		if (missedCount == 5) {
 			JOptionPane.showMessageDialog(null, "You lost");
@@ -88,5 +91,6 @@ public class WhackAMole implements ActionListener {
 		Date timeAtEnd = new Date();
 		JOptionPane.showMessageDialog(null, "Your whack rate is "
 				+ ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked) + " moles per second.");
+	
 	}
 }
