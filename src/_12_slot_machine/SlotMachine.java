@@ -37,36 +37,37 @@ public class SlotMachine implements ActionListener {
 		frame.add(panel);
 		panel.add(button);
 		button.addActionListener(this);
+	frame.setSize(900,400);
 	}
 
 	void random() {
 		panel.removeAll();
 		panel.add(button);
 		Random rand = new Random();
-		r1 = rand.nextInt(2);
-		r2 = rand.nextInt(2);
-		r3 = rand.nextInt(2);
+		r1 = rand.nextInt(3);
+		r2 = rand.nextInt(3);
+		r3 = rand.nextInt(3);
 		try {
 			if (r1 == 0) {
 				l1 = createLabelImage("cherries.jpg");
 			} else if (r1 == 1) {
 				l1 = createLabelImage("grapes.jpg");
 			} else if (r1 == 2) {
-				l1 = createLabelImage("seven.jpg");
+				l1 = createLabelImage("seven1.jpg");
 			}
 			if (r2 == 0) {
 				l2 = createLabelImage("cherries.jpg");
 			} else if (r2 == 1) {
 				l2 = createLabelImage("grapes.jpg");
 			} else if (r2 == 2) {
-				l2 = createLabelImage("seven.jpg");
+				l2 = createLabelImage("seven1.jpg");
 			}
 			if (r3 == 0) {
 				l3 = createLabelImage("cherries.jpg");
 			} else if (r3 == 1) {
 				l3 = createLabelImage("grapes.jpg");
 			} else if (r3 == 2) {
-				l3 = createLabelImage("seven.jpg");
+				l3 = createLabelImage("seven1.jpg");
 			}
 
 		} catch (MalformedURLException e) {
@@ -75,8 +76,9 @@ public class SlotMachine implements ActionListener {
 		}
 	panel.add(l1);
 	panel.add(l2);
-	panel.add(l3);
-	checkWhen();
+	panel.add(l3);	
+frame.pack();
+checkWhen();
 	}
 
 	void checkWhen() {
